@@ -4,7 +4,7 @@ class CreateProficienciesTable < ActiveRecord::Migration
       t.integer :user_id
       t.integer :skill_id
       t.integer :years_of_education
-      t.boolean :formal_education
+      t.boolean :formal_education, :default => false
       t.timestamps
     end
   end

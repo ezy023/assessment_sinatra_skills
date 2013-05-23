@@ -56,3 +56,17 @@ post '/users' do
     erb :sign_up
   end
 end
+
+get '/skills/new' do
+  erb :add_skill
+end
+
+post '/skills/new' do
+  @skill = Skill.new(:name => params[:skill], :context => params[:context])
+  @skill.save
+  puts "SKILL ID IS #{@skill.id}"
+  Proficiency.create(:skill_id => @skill.id, :user_id => current_user.id, :years_of_education => params[:years])
+  redirect to '/'
+end
+
+
